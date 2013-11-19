@@ -1,0 +1,143 @@
+@charset "utf-8";
+
+
+
+/* clearfix
+---------------------------------*/
+.clearfix:after {/*for modern browser*/
+	content: " ";
+	display: block;
+	clear: both;
+	height: 0;
+	visibility: hidden;
+}
+
+.clearfix {
+	zoom: 1; /*for IE 5.5-7*/
+	display: inline-block;
+}
+
+/* exlude MacIE 5 \*/
+* html .clearfix {
+	height: 1%;
+}
+
+.clearfix {
+	display: block;
+}
+/* end MacIE5 */
+
+html {
+	position: relative;
+	height: 100%;
+	font-size: 70%;
+}
+body {
+	// fontなし
+	// font-family: 'メイリオ', 'ＭＳ Ｐゴシック', sans-serif;だめだった
+	// font-family: 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+	// font-family:'Lucida Grande','Hiragino Kaku Gothic ProN', Meiryo, sans-serif\9;
+	height: 100%;
+	background: #FEFEFE;
+	margin: 0;
+	padding: 0;
+	min-width: 980px;
+}
+// :root body{
+// 	font-family:'Lucida Grande','Hiragino Kaku Gothic ProN', Meiryo, sans-serif\9;
+// }
+// html >/**/body div.container{
+// // 	font-family:'Lucida Grande','Hiragino Kaku Gothic ProN', Meiryo, sans-serif\9;
+// 	font-family:Meiryo\9 !important;
+// }
+
+// // //ie6〜8を除く
+:root *> body{
+	font-family:Meiryo\9;
+	// font-family:'Lucida Grande','Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+}
+//ie8 ng
+body{
+	font-family:Meiryo\9;
+	// font-family:'Lucida Grande','Hiragino Kaku Gothic ProN', Meiryo, sans-serif\9 !important;
+	// font-family:'Lucida Grande'\9,'Hiragino Kaku Gothic ProN'\9, Meiryo\9, sans-serif\9 !important;
+}
+
+//all
+// body{
+// 	font-family:'Lucida Grande','Hiragino Kaku Gothic ProN', Meiryo, sans-serif\9;
+// }
+
+@media screen and (-webkit-min-device-pixel-ratio : 0 ) {
+	:root body{
+		font-family:'Lucida Grande','Hiragino Kaku Gothic ProN', Meiryo, sans-serif\9;
+	}
+}
+
+ul {
+	list-style: none;
+}
+
+
+
+
+
+
+
+
+body {
+	background: url(../cake-img/elements/bg/bg.gif) repeat;
+}
+
+
+body {
+
+	>.container {
+
+		>.content-wrapper {
+			width: 980px;
+			margin: 15px auto;
+			position: relative;
+			*zoom: 1;
+
+			&:after {
+				display: block;
+				clear: both;
+				height: 0.01px;
+				content: '';
+			}
+		}
+	}
+}
+a {
+	color: #000;
+	text-decoration: underline;
+	&:hover{
+		text-decoration: none;
+
+	}
+}
+.bread-list {
+	height: 14px;
+	margin: 0 auto;
+	text-align: right;
+	padding: 12px 0;
+	font-size: 10px;
+
+	a {
+		color: #000;
+	}
+}
+// *+html body{
+// 	// font-family:Meiryo, sans-serif !important;ダメ
+// 	// font-family: 'メイリオ', 'ＭＳ Ｐゴシック' !important;だめ
+// 	// font-family: 'ＭＳ Ｐゴシック' !important;だめ
+// 	// font-family: 'メイリオ' !important;だめ
+// 	// font-family:sans-serif !important;
+// 	// font-family: 'ＭＳ Ｐゴシック';
+// 	// font-family: 'ＭＳ ゴシック';
+// 	// background: red !important;
+// 	// font-family:'Lucida Grande';
+// 	// font-family:'メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+// 	font-family:'MS ゴシック' !important;
+// }

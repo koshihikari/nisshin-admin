@@ -1,0 +1,419 @@
+<?php
+//cssタグ挿入
+	$prefix = ($is_partner_company === true) ? '../' : '';
+	$this->start('custom-less');
+	$less=array(
+		'../less/custom/contents/top/top.less',
+		'../less/custom/elements/top/information.less',
+		'../less/custom/elements/top/column.less',
+		'../plugin/woothemes-FlexSlider-ca347d4/flexslider.css'
+	);
+	if ($is_partner_company === true) {
+		array_push($less, '../less/custom/elements/top/partnerCompany.less');
+	} else {
+		array_push($less, '../less/custom/elements/top/gallery.less');
+	}
+	echo $this->Less->link($less, array('minify'=>true, 'combine'=>true));
+	$this->end();
+
+	$this->start('custom-script');
+	$script = array(
+		$prefix . './cake-js/self/contents/top/top.js'
+	);
+	if ($is_partner_company === false) {
+		array_push($script, './cake-js/self/contents/top/gallery.js');
+		array_push($script, './plugin/woothemes-FlexSlider-ca347d4/jquery.flexslider-min.js');
+	}
+	for ($i=0,$len=count($script); $i<$len; $i++) {
+		echo '<script type="text/javascript" src="' . $script[$i] . '"></script>';
+	}
+	$this->end();
+ ?>
+
+<div id="ci_entire">
+	<div id="ci_blockSpace">
+		<div id="ci_main" class="cc_contentGroup clearfix">
+			<div class="cc_mapDiv cc_4box">
+				<div class="cc_map">
+					<div class="cc_prefName tokyo">
+						<?php echo $this->Html->link('', '/tokyo/'); ?>
+					</div>
+					<div class="cc_prefName chiba">
+						<?php echo $this->Html->link('', '/chiba/'); ?>
+					</div>
+					<div class="cc_prefName saitama">
+						<?php echo $this->Html->link('', '/saitama/'); ?>
+					</div>
+					<div class="cc_prefName kanagawa">
+						<?php echo $this->Html->link('', '/kanagawa/'); ?>
+					</div>
+					<div class="cc_prefLinks clearfix">
+						<div class="cc_prefLink tokyo">
+							<?php echo $this->Html->link('', '/tokyo/'); ?>
+						</div>
+						<div class="cc_prefLink kanagawa">
+							<?php echo $this->Html->link('', '/kanagawa/'); ?>
+						</div>
+						<div class="cc_prefLink saitama">
+							<?php echo $this->Html->link('', '/saitama/'); ?>
+						</div>
+						<div class="cc_prefLink chiba">
+							<?php echo $this->Html->link('', '/chiba/'); ?>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="cc_topVisuale cc_4box"></div> -->
+			<?php
+				if ($is_partner_company === false) {
+					echo $this->element('../../../data/top/gallery');
+				} else {
+					echo '<div class="partner-company">';
+					echo $this->Html->image('../data/top/partnerCompany.jpg', array('width'=>384, 'height'=>384));
+					echo '</div>';
+				}
+			?>
+		</div>
+		<div id="ci_topBlockMenu" class="cc_contentGroup clearfix">
+<?php
+	function renderBlocks($arr_url, $scope) {
+
+		for ($i=0; $i<count($arr_url); $i++){
+			if($arr_url[$i]['url'] == false){
+				echo '<div class="cc_1box blockMenu_'.$i.'">';
+			} else {
+					echo $scope->Html->link('', $arr_url[$i]['url'], $arr_url[$i]['target']);
+			};
+			echo '</div>';
+		};
+	};
+	$arr_url1	= 
+		array(
+			array(
+				'url' => '/aboutpalacestage/',
+				'target' => ''
+			)
+			array(
+				'url' => '/palacestage_club/',
+				'target' => ''
+			)
+			array(
+				'url' => 'http://ns-blog.com',
+				'target' => array('target'=>'_blank')
+			)
+			array(
+				'url' => 'http://www.nisshinfudosan.com/bukken/',
+				'target' => array('target'=>'_blank')
+			)
+		);
+	// $arr_url1	= array(
+	// 					0 => '/aboutpalacestage/',
+	// 					1 => '/palacestage_club/',
+	// 					2 => 'http://ns-blog.com',
+	// 					3 => 'http://www.nisshinfudosan.com/bukken/'
+	// 					// 3 => '/2012bukken/'
+	// 				);
+	// $arr_target1	= array(//trueで_blank
+	// 					0 => false,
+	// 					1 => false,
+	// 					2 => true,
+	// 					3 => true
+	// 				);
+	renderBlocks($arr_url1,$arr_target1,$this);
+?>
+		</div>
+		<?php echo $this->element('../../../data/top/information'); ?>
+
+		<div id="ci_recommend" class="cc_contentGroup clearfix">
+			<div class="cc_recTxt">おすすめ物件</div>
+
+
+			<ul class="cc_residence">
+<?php
+	$residenceSumNum = count($residence_data);
+	function renderResiParagraph($dataOneResi,$resiNum,$analyzedArray) {
+		echo '<table class="cc_resiParagraph"><tbody>';
+			//for文
+		echo '<tr><td class="cc_tran">交通／';
+		$countTrain = count($dataOneResi['train']);
+		for($i = 0; $i < $countTrain; $i++) {
+			echo str_replace("\\n", '<br />', $dataOneResi['train'][$i]);
+			if($i != $countTrain - 1){
+				echo '、';
+			}
+		};
+		echo '</td></tr>';
+		if($analyzedArray['plan'] != false){
+			echo '<tr><td>間取り／'.$analyzedArray['plan'].'</td></tr>';
+		}
+		if($analyzedArray['price'] != false){
+			echo '<tr><td>価格／'.$analyzedArray['price'].'</td></tr>';
+		}
+
+
+
+			// echo 'span{価格／'.$priceText.'}<br>';
+					// echo count($dataOneResi['train']);
+		// echo count($dataOneResi['plan']);
+		// echo count($dataOneResi['estPrice']);
+		// echo count($dataOneResi['salePrice']);
+		echo '</tbody></table>';
+
+	};
+	function renderResiElement($thisObj,$dataOneResi,$resiNum,$analyzedArray) {
+		$areaClass = null;
+		switch ($dataOneResi['area']) {
+			case '東京23区':
+				$areaClass = 'tokyo23';
+				break;
+			case '東京都下':
+				$areaClass = 'tokyoElse';
+				break;
+			case '千葉':
+				$areaClass = 'chiba';
+				break;
+			case '埼玉':
+				$areaClass = 'saitama';
+				break;
+			case '神奈川':
+				$areaClass = 'kanagawa';
+				break;
+		};
+		echo '<div class="cc_resiArea cc_'.$areaClass.'"></div>';
+
+		echo '<div class="cc_resiThumb"">' . $thisObj->Html->link($thisObj->Html->image($dataOneResi['resiThumb'], array('alt'=>str_replace("\\n", '', $dataOneResi['resiName']), 'width'=>184, 'height'=>134)), $dataOneResi['resiUrl'], array('target'=>'_blank', 'escape'=>false));
+		// echo '<div class="cc_resiThumb"">' . $thisObj->Html->image($dataOneResi['resiThumb'], array('alt'=>str_replace("\\n", '', $dataOneResi['resiName']), 'width'=>184, 'height'=>134, 'url'=>$dataOneResi['resiUrl']));
+		// echo '<div class="cc_resiThumb""><a href="'.$dataOneResi['resiUrl'].'"><img src="'.$dataOneResi['resiThumb'].'" alt="'.str_replace("\\n", '', $dataOneResi['resiName']).'"></a>';
+		if($dataOneResi['isNew'] == true){
+			echo '<span class="isNew"></span>';
+		};
+		echo '</div>';
+		// echo '<div class="cc_resiThumb" style="background:url('.$dataOneResi['resiThumb'].') no-repeat;"></div>';
+		echo '<div class="cc_resiTexts">';
+		echo '<div class="cc_resiName"><a href="'.$dataOneResi['resiUrl'].'" target="_blank">'.str_replace("\\n", '<br />', $dataOneResi['resiName']).'</a></div>';
+		echo '<div class="cc_resiTopText"><div class="cc_trans"><span>'.str_replace("\\n", '<br />', $dataOneResi['topResiTxt']).'</span></div></div>';
+		renderResiParagraph($dataOneResi,$resiNum,$analyzedArray);
+		echo '</div>';
+
+		echo '<ul class="cc_resiUrls"><li class="cc_resiUrl"><a href="'.$dataOneResi['resiUrl'].'" target="_blank"></a></li>';
+		echo '<li class="cc_resiRequest"><a href="'.$dataOneResi['requestUrl'].'" target="_blank"></a></li></ul>';
+
+
+		// echo $dataOneResi['area'];
+		// echo $dataOneResi['resiThumb'];
+		// echo str_replace("\\n", '<br />', $dataOneResi['resiName']);
+		// echo str_replace("\\n", '<br />', $dataOneResi['topResiTxt']);
+		// echo count(str_replace("\\n", '<br />', $dataOneResi['train']));
+		// echo count($dataOneResi['plan']);
+		// echo count($dataOneResi['estPrice']);
+		// echo count($dataOneResi['salePrice']);
+		// echo $dataOneResi['resiUrl'];
+		// echo $dataOneResi['requestUrl'];
+		// echo $dataOneResi['isNew'];
+		// echo count($dataOneResi['icon']);
+		// echo $resiNum;
+
+	};
+
+	function renderResidence($thisObj,$dataOneResi,$resiNum,$analyzedArray) {
+		echo '<li class="cc_resiBox resi_'.$resiNum.'">';
+		renderResiElement($thisObj,$dataOneResi,$resiNum,$analyzedArray);
+		echo '</li>';
+	};
+
+	function numberFormat($arrPriceBefore) {//数字であればカンマと万円の付与、複数あれば連結。
+		$arrPriceAfter = array();
+		$count = count($arrPriceBefore);
+		for ($i=0; $i<$count; $i++){
+			if(is_numeric($arrPriceBefore[$i]) == true){
+				$priceAfter = number_format($arrPriceBefore[$i]).'万円';
+			} else {
+				$priceAfter = $arrPriceBefore[$i];
+			};
+			array_push($arrPriceAfter, $priceAfter);
+		};
+		if($count == 2){
+			$priceTxt = $arrPriceAfter[0].'〜'.$arrPriceAfter[1];
+		} else {
+			$priceTxt = $arrPriceAfter[0];
+		};
+		return($priceTxt);
+	};
+
+	function analyzeArray($thisObj,$dataOneResi) {
+//plan
+		if ((count($dataOneResi['plan']) >= 2) && ($dataOneResi['plan'][0] == $dataOneResi['plan'][1])) {
+		    $planTxt = $dataOneResi['plan'][0];
+		} elseif (count($dataOneResi['plan']) == 1){
+			if(count($dataOneResi['plan'][0]) > 0){
+				$planTxt = $dataOneResi['plan'][0];
+			} else {
+				$planTxt = $dataOneResi['plan'][1];
+			};
+		} elseif (count($dataOneResi['plan']) >= 2){
+			$planTxt = $dataOneResi['plan'][0].'〜'.$dataOneResi['plan'][1];
+		} else{
+		// } elseif (count($dataOneResi['plan']) < 1){
+			$planTxt = false;
+		};
+
+//price
+		$countEst = count($dataOneResi['estPrice']);
+		$countSales = count($dataOneResi['salePrice']);
+		if (( $countEst > 0) && ( $countSales > 0)) {
+		    $arrPrice = $dataOneResi['salePrice'];
+		} elseif ( $countSales > 0){
+		    $arrPrice = $dataOneResi['salePrice'];
+		} elseif ( $countEst > 0) {
+		    $arrPrice = $dataOneResi['estPrice'];
+		} else {
+			$arrPrice = false;
+		};
+
+//販売予定とかに〜台とか、予定、とか入れる場合、上記の$arrPrice振り分けで、
+//isCorrectもつかい、下記でそれに基づき、文字の出力を変更。
+		if ((count($arrPrice) >= 2) && ($arrPrice[0] == $arrPrice[1])) {
+		    $priceTxt = numberFormat(array($arrPrice[0]));
+		} elseif (count($dataOneResi['plan']) == 1){
+			if(count($dataOneResi['plan'][0]) > 0){
+				$priceTxt = numberFormat(array($arrPrice[0]));
+			} else {
+				$priceTxt = numberFormat(array($arrPrice[1]));
+			};
+		} elseif (count($arrPrice) >= 2){
+			$priceTxt = numberFormat(array($arrPrice[0],$arrPrice[1]));
+		    // $priceTxt = number_format($arrPrice[0]).'万円';
+		    $priceTxt = $arrPrice[0];
+		} elseif (count($dataOneResi['plan']) == 1){
+			if(count($dataOneResi['plan'][0]) > 0){
+				// $priceTxt = number_format($dataOneResi['plan'][0]).'万円';
+				$priceTxt = $dataOneResi['plan'][0];
+			} else {
+				// $priceTxt = number_format($dataOneResi['plan'][1]).'万円';
+				$priceTxt = $dataOneResi['plan'][1];
+			};
+		} elseif (count($arrPrice) >= 2){
+			// $priceTxt = number_format($arrPrice[0]).'万円〜'.number_format($arrPrice[1]).'万円';
+			$priceTxt = $arrPrice[0].'〜'.$arrPrice[1];
+		    // $priceTxt = number_format($arrPrice[0]).'万円';
+		    $priceTxt = $arrPrice[0];
+		} elseif (count($dataOneResi['plan']) == 1){
+			if(count($dataOneResi['plan'][0]) > 0){
+				// $priceTxt = number_format($dataOneResi['plan'][0]).'万円';
+				$priceTxt = $dataOneResi['plan'][0];
+			} else {
+				// $priceTxt = number_format($dataOneResi['plan'][1]).'万円';
+				$priceTxt = $dataOneResi['plan'][1];
+			};
+		} elseif (count($arrPrice) >= 2){
+			// $priceTxt = number_format($arrPrice[0]).'万円〜'.number_format($arrPrice[1]).'万円';
+			$priceTxt = $arrPrice[0].'〜'.$arrPrice[1];
+		} else{
+		// } elseif (count($arrPriceTreated) < 1){
+			$priceTxt = false;
+		};
+
+		// if ((count($arrPrice) >= 2) && ($arrPrice[0] == $arrPrice[1])) {
+		//     $priceTxt = $arrPrice[0].'万円';
+		// } elseif (count($dataOneResi['plan']) == 1){
+		// 	if(count($dataOneResi['plan'][0]) > 0){
+		// 		$priceTxt = $arrPrice[0].'万円';
+		// 	} else {
+		// 		$priceTxt = $arrPrice[1].'万円';
+		// 	};
+		// } elseif (count($arrPrice) >= 2){
+		// 	$priceTxt = $arrPrice[0].'万円〜'.$arrPrice[1].'万円';
+		// } else{
+		// // } elseif (count($arrPriceTreated) < 1){
+		// 	$priceTxt = false;
+		// };
+
+		// $arrPriceTreated = numberFormat($arrPrice);
+
+// //iconオブジェクト！
+// 		//arrayにした場合は、数を数えて、５の場合４に整形、数だけforで、値に応じたurlを動的に表示するだけ。
+
+// 		$isCorrect = true;
+// 		$arrIconUrl = array(//これが表示順になる。
+// 				 'isTimeOnFoot'		=> '1'
+// 				,'isFamily'			=> '2'
+// 				,'isSingleDinks'	=> '3'
+// 				,'isVisitLocal'		=> '4'
+// 				,'isOpenGallery'	=> '5'//全てが表示になっている際、これがカットされる。
+// 			);
+
+// 		foreach ($dataOneResi['icon'] as $key => $value) {
+// 		    if($value === false){
+// 		    	unset($arrIconUrl[$key]);
+// 		    };
+// 		};
+// 		array_splice($arrIconUrl, 4);
+		$analyzedArray = array(
+			 'plan' => $planTxt
+			,'price' => $priceTxt
+			);
+		return $analyzedArray;
+	};
+	for ($i=0; $i<$residenceSumNum; $i++){
+			$dataOneResi = $residence_data[$i];
+			$resiNum = $i;
+			$analyzedArray = analyzeArray($this,$dataOneResi);//array,objectで渡された部分を必要に応じて返す。
+			renderResidence($this,$dataOneResi,$resiNum,$analyzedArray);
+	};
+
+	// $resiBoxSet =
+	// 	'<div class="cc_resiBox">
+	// 		<div class="cc_resiArea"></div>
+	// 		<div class="cc_resiThumb"></div>
+	// 		<div class="cc_resiTexts"></div>
+	// 		<div class="cc_resiUrl"></div>
+	// 		<div class="cc_resiRequest"></div>
+	// 	</div>';
+	// 		echo $this->Html->div(
+	// 			array('cc_resiBox', 'resi_'.$resiNum),
+	// 			$resiBoxSet
+	// 		);
+?>
+
+
+			</ul>
+
+
+		</div>
+		<div id="ci_bottomBlockMenu" class="cc_contentGroup clearfix">
+<?php
+
+	$arr_url2	= array(
+						0 => false,
+						1 => 'http://www.nisshinfudosan.com/strong/',
+						2 => 'http://www.nisshinfudosan.com/strong/strong1.html',
+						3 => 'http://www.nisshinfudosan.com/strong/strong2.html',
+						4 => false,
+						5 => 'http://www.palacestage.com',
+						6 => 'http://www.duostage.com',
+						7 => 'https://www.biccamera.com/bicbic/jsp/w/bichoujin/nisshin_f/bicstaff_login.jsp'
+					);
+	$arr_target2 = array(//trueで_blank
+						0 => false,
+						1 => true,
+						2 => true,
+						3 => true,
+						4 => false,
+						5 => true,
+						6 => true,
+						7 => true
+					);
+	renderBlocks($arr_url2,$arr_target2,$this);
+?>
+		</div>
+		<div id="ci_columns" class="cc_contentGroup">
+			<div class="cc_brushUpLife">
+				<?php echo $this->element('../../../data/top/column_brushUpLife'); ?>
+			</div>
+			<div class="cc_desirableTown">
+				<?php echo $this->element('../../../data/top/column_desirableTown'); ?>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+
+.footer {
+	background: #D4F3E2;
+	padding-bottom: 60px;
+
+	ul {
+		padding-left: 0;
+	}
+
+	// a {
+	// 	color: #000;
+
+	// 	&:hover {
+	// 		text-decoration: none;
+	// 		color: #999;
+	// 	}
+	// }
+
+	.return-to-top {
+		display: block;
+		height: 57px;
+		text-indent: -9999px;
+		background: #b3f3d0 url(../cake-img/elements/footer/footerBtns.gif) no-repeat 50% 0;
+
+		&:hover {
+			background: #a8e6c5 url(../cake-img/elements/footer/footerBtns.gif) no-repeat 50% -60px;
+		}
+	}
+
+	>.wrapper {
+		width: 980px;
+		margin: 60px auto 0;
+
+		>.info {
+			float: left;
+
+			.logo {
+
+				a {
+					display: block;
+					text-indent: -9999px;
+					width: 138px;
+					height: 29px;
+					background: url(../cake-img/elements/footer/logo_green.gif) no-repeat;
+				}
+			}
+		}
+
+		>.menu-wrapper {
+			float: right;
+
+			li {
+				margin-bottom: 20px;
+			}
+
+			>.menu1 {
+				float: left;
+				width: 110px;
+				padding-left: 27px;
+				border-left: 1px dotted #809187;
+			}
+
+			>.menu2 {
+				float: left;
+				width: 220px;
+				padding-left: 27px;
+				border-left: 1px dotted #809187;
+			}
+
+			>.menu3 {
+				float: right;
+				width: 190px;
+				padding-left: 27px;
+				border-left: 1px solid #aaa;
+				border-right: 1px dotted #809187;
+			}
+
+			.area,
+			.commitment-to-quality,
+			.bland,
+			.column {
+				p {
+					margin-bottom: -2px;
+				}
+				ul {
+					li {
+						margin-left: 30px;
+						margin-bottom: 5px;
+					}
+				}
+			}
+			.commitment-to-quality {
+				p {
+					margin-top: 0;
+				}
+			}
+
+			a {
+				&[target="_blank"] {
+					background: url(../cake-img/elements/blankLinkIcon.gif) no-repeat 100% 50%;
+					padding: 0 13px 0 0;
+				}
+			}
+		}
+	}
+}
+
+// for IE7
+*+html .footer >.wrapper >.info ul {
+	margin-left: 0;
+}
+*+html .footer >.wrapper >.menu-wrapper >.menu1 > ul,
+*+html .footer >.wrapper >.menu-wrapper >.menu2 > ul,
+*+html .footer >.wrapper >.menu-wrapper >.menu3 > ul {
+	margin-left: 0;
+}
+*+html .footer >.wrapper >.menu-wrapper >.menu1 .area ul,
+*+html .footer >.wrapper >.menu-wrapper >.menu2 .commitment-to-quality ul,
+*+html .footer >.wrapper >.menu-wrapper >.menu2 .bland ul,
+*+html .footer >.wrapper >.menu-wrapper >.menu3 .column ul {
+	margin: 10px 0 0 0;
+}

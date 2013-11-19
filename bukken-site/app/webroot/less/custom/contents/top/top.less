@@ -1,0 +1,516 @@
+@charset "utf-8";
+
+// 変数定義
+@default_color: transparent;
+@s_margin:16px;
+@1boxSize:184px;
+@2boxSize:@1boxSize*2+@s_margin;
+@3boxSize:@1boxSize*3+@s_margin*2;
+@4boxSize:@1boxSize*4+@s_margin*3;
+@infoLogoWidth:150px;
+@infoLogoWidth:150px;
+
+@buttonHeight:38px;
+@areaHeight:19px;
+@thumbHeight:@1boxSize*3/4;
+@resiNameHeight:40px;
+
+// ミックスイン
+
+.box (@boxSize: @1boxSize) {
+	height: @boxSize;
+	width: @boxSize;
+	margin-left: @s_margin;
+	float: left;
+}
+.1box (@url: url(../cake-img/contents/top/map/map_only.gif)) {
+	// background: @url  no-repeat;
+	.box;
+}
+.2_1box (@url: url(../cake-img/contents/top/map/map_only.gif)) {
+	background: @url  no-repeat;
+	.box(@2boxSize);
+	height: @1boxSize;
+}
+.2_2box (@url: url(../cake-img/contents/top/btnsInTopPage1.gif)) {
+	background: @url no-repeat -1px 0;
+	.box(@2boxSize);
+}
+.a_sizing () {
+	display: block;
+	position: relative;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	text-align: left;
+}
+
+body#indexInIndex{
+	#ci_entire{
+		background: @default_color;
+		float: right;
+		width: 800px;
+
+		#ci_blockSpace{
+
+			#ci_main{
+				.cc_map{
+					.2_2box;
+					z-index: 1;
+					*{
+						z-index: 10;
+					}
+					.cc_prefName{
+						height: 18px;
+						width: 57px;
+						a{
+							display: block;
+							width: 100%;
+							height: 100%;
+						}
+						&.tokyo{
+							position: relative;
+							top: 154px;
+							left: 97px;
+							a {
+								background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -389px 0;
+								&:hover{
+									background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -460px 0;
+								}
+							}
+						}
+						&.chiba{
+							position: relative;
+							top: 177px;
+							left: 207px;
+							a {
+								background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -389px -54px;
+								&:hover{
+									background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -460px -54px;
+								}
+							}
+						}
+						&.saitama{
+							position: relative;
+							top: 59px;
+							left: 80px;
+							a {
+								background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -390px -36px;
+								&:hover{
+									background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -460px -36px;
+								}
+							}
+						}
+						&.kanagawa{
+							position: relative;
+							top: 152px;
+							left: 70px;
+							width: 70px;
+							a {
+								background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -389px -18px;
+								&:hover{
+									background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -460px -18px;
+								}
+							}
+						}
+					}
+					.cc_prefLinks{
+							position: relative;
+							top: 251px;
+							left: 20px;
+						.cc_prefLink{
+							height: 40px;
+							width: 85px;
+							float: left;
+							a{
+								display: block;
+								width: 100%;
+								height: 100%;
+							}
+							&.tokyo{
+								a {
+									background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -389px -87px;
+									&:hover{
+										background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -389px -127px;
+									}
+								}
+							}
+							&.chiba{
+								a {
+									background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -647px -87px;
+									&:hover{
+										background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -647px -127px;
+									}
+								}
+							}
+							&.saitama{
+								a {
+									background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -561px -87px;
+									&:hover{
+										background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -561px -127px;
+									}
+								}
+							}
+							&.kanagawa{
+								a {
+									background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -476px -87px;
+									&:hover{
+										background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -476px -127px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			#ci_topBlockMenu{
+				.cc_1box:nth-child{
+					.1box(url(../cake-img/contents/top/contentsMenu/blockMenu_series_def.jpg));
+				}
+			}
+			#ci_topBlockMenu{
+				.cc_1box{
+					margin-bottom: @s_margin;
+					.1box;
+					&.blockMenu_0{
+						a {
+							background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -1px 0 no-repeat;
+							&:hover{
+								background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -1px -185px no-repeat;
+							}
+						}
+					}
+					&.blockMenu_1{
+						a {
+							background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -200px 0 no-repeat;
+							&:hover{
+								background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -200px -185px no-repeat;
+							}
+						}
+					}
+					&.blockMenu_2{
+						a {
+							background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -400px 0 no-repeat;
+							&:hover{
+								background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -400px -185px no-repeat;
+							}
+						}
+					}
+					&.blockMenu_3{
+						a {
+							background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -600px 0 no-repeat;
+							&:hover{
+								background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -600px -185px no-repeat;
+							}
+						}
+					}
+					a{
+						.a_sizing;
+					}
+				}
+			}
+			#ci_info{
+				width: @4boxSize;
+				margin-left: @s_margin;
+				background: white;
+				padding: 30px 0;
+				.cc_infoLogoSpace{
+					width: @infoLogoWidth;
+					float: left;
+
+					.cc_infoLogo{
+						margin: 0 auto;
+						height: 7px;
+						width: 85px;
+						background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -391px -207px;
+						// background: url(../cake-img/contents/top/text/information.gif) no-repeat;
+					}
+				}
+				.cc_infoContents{
+					width: (800px-@infoLogoWidth)-@s_margin;
+					background: green;
+					float: left;
+				}
+			}
+			#ci_recommend{
+				margin-left: @s_margin;
+				margin-bottom: @s_margin;
+				.cc_recTxt{
+					margin-top: 30px;
+					background: url(../cake-img/contents/top/btnsInTopPage1.gif) no-repeat -390px -228px;
+					text-indent: -9999px;
+					height: 28px;
+					margin-bottom: 10px;
+				}
+				.cc_residence{
+					margin: 0;
+					padding: 0;
+					margin-left: -@s_margin;
+					.cc_resiBox{
+						width: @1boxSize;
+						float: left;
+						background: transparent;
+						background: white;
+						float: left;
+						position: relative;
+						margin-left: @s_margin;
+						margin-bottom: @buttonHeight + @buttonHeight + @s_margin;
+
+						.cc_resiArea{
+							height: @areaHeight;
+							text-align: center;
+							&.cc_tokyo23{
+								background: url(../cake-img/contents/top/btnsInTopPage1.gif) 0 -387px no-repeat;
+							}
+							&.cc_tokyoElse{
+								background: url(../cake-img/contents/top/btnsInTopPage1.gif) 0 -387px repeat;
+							}
+							&.cc_saitama{
+								background: url(../cake-img/contents/top/btnsInTopPage1.gif) -399px -387px no-repeat;
+							}
+							&.cc_chiba{
+								background: url(../cake-img/contents/top/btnsInTopPage1.gif) -597px -387px no-repeat;
+							}
+							&.cc_kanagawa{
+								background: url(../cake-img/contents/top/btnsInTopPage1.gif) -199px -387px no-repeat;
+							}
+						}
+						.cc_resiThumb{
+							height: 134px;
+							position: relative;
+							img{
+								height: 134px;
+								width: @1boxSize;
+							}
+							a{
+								display: block;
+							}
+							.isNew{
+								position: absolute;
+								display: block;
+								width: 42px;
+								height: 41px;
+								position: absolute;
+								top: -1px;
+								left: -1px;
+								text-indent: -9999px;
+								background: url(../cake-img/contents/area/btnsInAreaPage.gif) no-repeat 0 -177px;
+							}
+						}
+						.cc_resiTexts{//resiblock全体引く各要素
+							margin-bottom: 10px;
+
+							.cc_resiName{
+								font-weight: bold;
+								font-size: 1.2em;
+								display: block;
+								padding: 8px 8px 4px 8px;
+								a{
+									color: black;
+								}
+							}
+							.cc_resiTopText{
+								font-weight: bold;
+								font-size: 1.2em;
+								text-align: center;
+								padding: 5px 8px;
+								.cc_trans{
+									padding: 10px 0;
+									height: 100%;
+									width: 168px;
+									background: url(../cake-img/elements/bg/bg.gif) repeat;
+									span{
+									}
+								}
+							}
+							.cc_resiParagraph{
+								padding: 0 8px;
+								margin: 0;
+								.trainTitle{
+									float: left;
+									width: 34px;
+									margin: 0;
+								}
+								.trainValue{
+									float: left;
+									width: 127px;
+									margin: 0;
+								}
+							}
+						}
+						.cc_resiUrls{
+							width: 100%;
+							margin: 0;
+							margin-bottom: -@buttonHeight - @buttonHeight;
+							padding: 0;
+							position: absolute;
+							bottom: 0;
+							.cc_resiUrl{
+								height: @buttonHeight;
+								background: url(../cake-img/contents/top/btnsInTopPage1.gif) 0 -752px no-repeat;
+								&:hover{
+									background: url(../cake-img/contents/top/btnsInTopPage1.gif) -199px -752px  no-repeat;
+								}
+								a{
+									height: @buttonHeight;
+									display: block;
+								}
+							}
+							.cc_resiRequest{
+								height: @buttonHeight;
+								background: url(../cake-img/contents/top/btnsInTopPage1.gif) 0 -791px no-repeat;
+								&:hover{
+									background: url(../cake-img/contents/top/btnsInTopPage1.gif) -199px -791px  no-repeat;
+								}
+								a{
+									height: @buttonHeight;
+									display: block;
+								}
+							}
+						}
+					}
+				}
+			}
+			#ci_bottomBlockMenu{
+				.cc_1box{
+					margin-bottom: @s_margin;
+					.1box;
+					&.blockMenu_0{
+						background: url(../cake-img/contents/top/btnsInTopPage1.gif) 0 -860px no-repeat;
+					}
+					&.blockMenu_1{
+						background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -199px -382px no-repeat;
+						&:hover{
+							background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -199px -568px no-repeat;
+						}
+					}
+					&.blockMenu_2{
+						background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -399px -382px no-repeat;
+						&:hover{
+							background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -399px -568px no-repeat;
+						}
+					}
+					&.blockMenu_3{
+						background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -597px -382px no-repeat;
+						&:hover{
+							background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -597px -568px no-repeat;
+						}
+					}
+					&.blockMenu_4{
+						background: url(../cake-img/contents/top/btnsInTopPage1.gif) -410px -859px no-repeat;
+					}
+					&.blockMenu_5{
+						background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -200px -771px no-repeat;
+						&:hover{
+							background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -200px -957px no-repeat;
+						}
+					}
+					&.blockMenu_6{
+						background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -398px -771px no-repeat;
+						&:hover{
+							background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -398px -957px no-repeat;
+						}
+					}
+					&.blockMenu_7{
+						background: url(../cake-img/contents/top/btnsInTopPage1.gif) -597px -859px no-repeat;
+						&:hover{
+							background: url(../cake-img/contents/top/btnsInTopPage1.gif) -597px -1045px no-repeat;
+						}
+					}
+					a{
+						.a_sizing;
+					}
+				}
+			}
+			#ci_columns{
+				.cc_brushUpLife{
+					margin-top: @s_margin;
+					.2_1box;
+					background: url(../cake-img/contents/top/btnsInTopPage2.jpg) 1px -1170px no-repeat;
+				}
+				.cc_desirableTown{
+					margin-top: @s_margin;
+					.2_1box;
+					background: url(../cake-img/contents/top/btnsInTopPage2.jpg) -398px -1170px no-repeat;
+				}
+			}
+		}
+	}
+}
+
+// for IE7
+*+html body#indexInIndex #ci_main,
+*+html body#indexInIndex #ci_topBlockMenu{
+	margin-bottom: 16px;
+}
+*+html body#indexInIndex #ci_bottomBlockMenu{
+	margin-top: @buttonHeight*2 + @s_margin*2;
+}
+
+*+html body#indexInIndex #ci_recommend{
+	margin-left: 0 !important;
+}
+*+html body#indexInIndex .cc_recTxt{
+	margin-left: @s_margin !important;
+}
+*+html body#indexInIndex .cc_trans{
+	width: 168px;
+	height: auto;
+}
+*+html body#indexInIndex .cc_resiTopText{
+	width: 134px;
+	height: auto;
+	padding: 0;
+}
+*+html body#indexInIndex .cc_resiThumb,
+*+html body#indexInIndex .cc_resiThumb a{
+	width: 134px;
+	height: auto;
+	padding: 0;
+}
+*+html body#indexInIndex .cc_resiBox{
+	width: 100%;
+	height: auto;
+}
+*+html body#indexInIndex .cc_resiParagraph{//ok
+	margin-left: 8px !important;
+	margin-right: 8px !important;
+}
+*+html body#indexInIndex .cc_resiName{
+	margin: 8px !important;
+	padding: 0 !important;
+}
+*+html body#indexInIndex .cc_resiName a{
+	margin-left: 0 !important;
+	margin-right: 0px !important;
+	// padding: 12px 8px 8px 8px !important;
+}
+*+html body#indexInIndex .cc_resiThumb a,
+*+html body#indexInIndex .cc_resiThumb img{
+	border: none !important;
+}
+*+html body#indexInIndex .cc_resiParagraph td,
+*+html body#indexInIndex .trainTitle,
+*+html body#indexInIndex .trainValue{
+	font-size: 1.0em !important;
+}
+// *+html body#indexInIndex #ci_topBlockMenu{
+// 	margin-top: 0px !important;
+// 	margin-bottom: 16px !important;
+// }
+
+//IE8
+body#indexInIndex .cc_resiThumb a,
+body#indexInIndex .cc_resiThumb img{
+	border: none\9 !important;
+}
+//IE9
+:root body#indexInIndex .cc_resiThumb a,
+:root body#indexInIndex .cc_resiThumb img{
+	border: none\9 !important ;
+}
+:root body#indexInIndex .cc_recTxt {
+	margin-bottom: 10px\9 !important;
+}
+

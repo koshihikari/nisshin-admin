@@ -1,0 +1,134 @@
+@charset "utf-8";
+
+.menu {
+	float: left;
+	width: 180px;
+	z-index: 200;
+
+	.floating-widget {
+		z-index: 200;
+
+		&.floating {
+			position: fixed;
+			top: 0;
+		}
+		&.pinned-bottom {
+			position: absolute;
+			bottom: 0;
+			_position: static;
+		}
+
+		li {
+			>a {
+				display: block;
+			}
+		}
+
+		>ul {
+			margin: 0;
+			padding: 0;
+			width: 180px;
+
+			>li {
+				border-bottom: 1px solid #dedede;
+
+				>a {
+					height: 38px;
+				}
+
+				&.area {
+					height: auto;
+
+					>p {
+						height: 38px;
+						margin: 0;
+						background: url(../cake-img/elements/menu/menu.gif) no-repeat 0 0;
+						text-indent: -9999px;
+					}
+
+					>ul {
+						padding-left: 0;
+						margin-left: 0;
+						width: 100%;
+
+						>li {
+							>a {
+								height: 30px;
+							}
+							&.tokyo {
+								background: url(../cake-img/elements/menu/menu.gif) no-repeat 0 -39px;
+								text-indent: -9999px;
+
+								&:hover {
+									background: url(../cake-img/elements/menu/menu.gif) no-repeat -184px -39px;
+								}
+							}
+							&.kanagawa {
+								background: url(../cake-img/elements/menu/menu.gif) no-repeat 0 -69px;
+								text-indent: -9999px;
+
+								&:hover {
+									background: url(../cake-img/elements/menu/menu.gif) no-repeat -184px -69px;
+								}
+							}
+							&.saitama {
+								background: url(../cake-img/elements/menu/menu.gif) no-repeat 0 -99px;
+								text-indent: -9999px;
+
+								&:hover {
+									background: url(../cake-img/elements/menu/menu.gif) no-repeat -184px -99px;
+								}
+							}
+							&.chiba {
+								background: url(../cake-img/elements/menu/menu.gif) no-repeat 0 -129px;
+								text-indent: -9999px;
+								height: 29px;
+
+								&:hover {
+									background: url(../cake-img/elements/menu/menu.gif) no-repeat -184px -129px;
+								}
+							}
+						}
+					}
+				}
+
+				&.all {
+					background: url(../cake-img/elements/menu/menu.gif) no-repeat 0 -159px;
+					text-indent: -9999px;
+
+					&:hover {
+						background: url(../cake-img/elements/menu/menu.gif) no-repeat -184px -159px;
+					}
+				}
+
+				&.blog {
+					background: url(../cake-img/elements/menu/menu.gif) no-repeat 0 -282px;
+					text-indent: -9999px;
+
+					&:hover {
+						background: url(../cake-img/elements/menu/menu.gif) no-repeat -184px -282px;
+					}
+				}
+
+				&.company-info {
+					background: url(../cake-img/elements/menu/menu.gif) no-repeat 0 -323px;
+					text-indent: -9999px;
+
+					&:hover {
+						background: url(../cake-img/elements/menu/menu.gif) no-repeat -184px -323px;
+					}
+				}
+
+				&.regist {
+					margin-top: 15px;
+					background: url(../cake-img/elements/menu/menu.gif) no-repeat 0 -378px;
+					text-indent: -9999px;
+
+					&:hover {
+						background: url(../cake-img/elements/menu/menu.gif) no-repeat -184px -378px;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,22 @@
+# User specific & automatically generated files #
+#################################################
+nisshin/bukken-site/app/Config/database.php
+nisshin/bukken-site/app/tmp
+nisshin/bukken-site/app/webroot/log.txt
+nisshin/bukken-site/lib/Cake/Console/Templates/skel/tmp/
+#/plugin
+nisshin/bukken-site/vendors
+nisshin/bukken-site/build
+nisshin/bukken-site/dist
+nisshin/bukken-site/tags
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db

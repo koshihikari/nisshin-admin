@@ -1,0 +1,9 @@
+
+bukken-site/app/Config/bootstrap.php
+bukken-site/app/Config/core.php
+bukken-site/app/Config/database.php
+bukken-site/app/tmp/*
+bukken-site/app/webroot/ccss/*
+!empty
+bukken-site/app/webroot/log.txt
+*.sublime-workspace

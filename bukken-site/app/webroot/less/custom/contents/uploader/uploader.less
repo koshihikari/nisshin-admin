@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+body#indexInUploader {
+
+		&.dragover {
+			background: #fdd;
+		}
+	#sortable {
+		border: 1px solid #ccc;
+		background: #fff;
+		width: 980px;
+
+		tr {
+			border-bottom: 1px solid #ccc;
+
+			&::before {
+				content: '';
+				border-bottom: 1px solid #ccc;
+				width: 970px;
+				position: absolute;
+			}
+		}
+
+		thead {
+			text-align: left;
+
+			tr {
+				&:before {
+					border: none;
+				}
+			}
+		}
+
+		td {
+			padding: 5px;
+
+			&.download-button {
+				width: 100px;
+				text-align: center;
+			}
+			&.del-button {
+				width: 60px;
+				text-align: center;
+			}
+		}
+	}
+}

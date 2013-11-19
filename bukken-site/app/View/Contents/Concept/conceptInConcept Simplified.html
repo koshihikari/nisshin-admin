@@ -1,0 +1,73 @@
+<?php
+//cssタグ挿入
+	$this->start('custom-less');
+	$less=array(
+		'../less/custom/contents/concept/concept.less'
+	);
+	echo $this->Less->link($less, array('minify'=>true, 'combine'=>true));
+	$this->end();
+
+	// $this->start('custom-script');
+	// $script = array(
+	// 	'../../cake-js/self/contents/concept/concept.js'
+	// );
+	// for ($i=0,$len=count($script); $i<$len; $i++) {
+	// 	echo '<script type="text/javascript" src="' . $script[$i] . '"></script>';
+	// }
+	// $this->end();
+ ?>
+
+
+<div class="content">
+	<div class="bread-list">
+		<?php echo $this->Html->link('TOP', array('controller'=>'', 'action'=>'index')); ?>
+		&nbsp;&gt;&nbsp;マンションブランド&nbsp;パレステージ
+	</div>
+	<div class="main-visual"><?php echo 'めいんびじゅある'; ?></div>
+
+	<div class="intro"></div>
+	<div class="key-img"></div>
+	<div class="blockMenu clearfix">
+<?php
+	function renderBlocks($arr_url) {
+
+		for ($i=0; $i<count($arr_url); $i++){
+			if($arr_url[$i] == false){
+				echo '<div class="float blockMenu_'.$i.'">';
+			} else {
+				echo '<div class="float blockMenu_'.$i.'">';
+				echo '<a href="'.$arr_url[$i].'"></a>';
+			};
+			echo '</div>';
+		};
+	};
+	$arr_url1	= array(
+						0 => '#naturally',
+						1 => '#partner',
+						2 => '#safety',
+						3 => '#comfort'
+					);
+	renderBlocks($arr_url1);
+
+?>
+	</div>
+	<ul class="details">
+<?php
+	$list = array('naturally','partner','safety','comfort');
+	for ($i=0; $i<count($list); $i++){
+		echo '<li class="detail" id="'.$list[$i].'"></li>';
+	};
+
+?>
+	</ul>
+<!-- 	<ul class="details">
+		<li class="detail naturally">
+		</li>
+		<li class="detail partner">
+		</li>
+		<li class="detail safety">
+		</li>
+		<li class="detail comfort">
+		</li>
+	</ul> -->
+</div>

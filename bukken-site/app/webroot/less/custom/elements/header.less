@@ -1,0 +1,95 @@
+@charset "utf-8";
+
+
+.header {
+	width: 100%;
+	background :#fff;
+
+	>.wrapper {
+		width: 980px;
+		margin: 0 auto;
+
+		h2, h1 {
+			float: left;
+		}
+
+		h2 {
+			margin-bottom: 10px;
+
+			a {
+				display: block;
+				width: 138px;
+				height: 29px;
+				text-indent: -9999px;
+				background: url(../cake-img/elements/header/logo.gif) no-repeat;
+			}
+		}
+
+		h1 {
+			font-size: 12px;
+			margin: 22px 0 0 28px;
+			line-height: 120%;
+		}
+
+		.font-size-controller {
+			display: none;
+			float: right;
+
+			>p, >ul {
+				float: left;
+			}
+
+			>p {
+				margin: 15px 10px 0 0;
+			}
+
+			>ul {
+				padding-left: 0;
+
+				>li {
+					float: left;
+					width: 28px;
+					height: 28px;
+					margin-left: 1px;
+
+					>a {
+						color: #999;
+						display: block;
+						text-align: center;
+						margin-top: 6px;
+						text-decoration: none;
+						font-weight: bold;
+						font-size: 105%;
+					}
+
+					&.small {
+						background: #e2f2e8;
+					}
+					&.midium {
+						background: #d4f3e3;
+					}
+					&.large {
+						background: #a5f3c9;
+					}
+				}
+			}
+		}
+	}
+}
+
+// for IE7
+*+html .header {
+	height: 50px;
+}
+*+html .header >.wrapper h2 {
+	margin-top: 12px;
+}
+*+html .header >.wrapper .font-size-controller {
+	margin-top: 12px;
+}
+*+html .header >.wrapper .font-size-controller >p {
+	margin: 5px 10px 0 0;
+}
+*+html .header >.wrapper .font-size-controller >ul {
+	margin-left: 0;
+}

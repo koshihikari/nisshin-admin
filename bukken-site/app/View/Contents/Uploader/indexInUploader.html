@@ -1,0 +1,58 @@
+<?php
+	// $prefix = ($is_partner_company === true) ? '../' : '';
+	// $this->start('custom-less');
+	$less=array(
+		'../less/custom/contents/uploader/uploader.less'
+	);
+	echo $this->Less->link($less, array('minify'=>true, 'combine'=>true));
+	$this->end();
+
+	$this->start('custom-script');
+	$script = array(
+		'../cake-js/helper/DropUploader.js',
+		'../cake-js/self/contents/uploader/uploader.js',
+		'../plugin/joequery-Stupid-Table-Plugin-79ea8cc/stupidtable.min.js'
+	);
+	for ($i=0,$len=count($script); $i<$len; $i++) {
+		echo '<script type="text/javascript" src="' . $script[$i] . '"></script>';
+	}
+	$this->end();
+ ?>
+
+<table id="sortable">
+	<thead>
+		<tr>
+			<th class="file-name" data-sort="string">ファイル名</th>
+			<th class="modified" data-sort="string">日付</th>
+			<!--<th class="download-button">&nbsp;</th>-->
+			<th class="del-button">&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php
+			$keies = array('directories', 'files');
+			foreach ($items as $key => $val):
+		?>
+			<?php for ($i=0,$len=count($val); $i<$len; $i++): ?>
+			<tr class="<?php echo $key === 'directories' ? 'directory' : 'file'; ?>">
+				<td class="name">
+					<?php
+						if ($key === 'directories') {
+							// echo $this->Html->link($val[$i]['name'], array('controller'=>'uploader', 'action'=>'/', $val[$i]['linkPath']));
+							// echo $this->Html->link($val[$i]['name'], array('controller'=>'uploader', 'action'=>'/', 'username'=>$val[$i]['path'], 69));
+							// echo $this->Html->link($val[$i]['name'], '/uploader/' . $val[$i]['name']);
+							echo $this->Html->link($val[$i]['name'], ('/uploader/?path=' . $val[$i]['linkPath']));
+						} else {
+							echo $val[$i]['name'];
+						}
+					?>
+				</td>
+				<td class="modified"><?php echo $val[$i]['date']; ?></td>
+				<!--<td class="download-button"><button>ダウンロード</button></td>-->
+				<td class="del-button"><button>削除</button></td>
+			</tr>
+			<?php endfor; ?>
+		<?php endforeach; ?>
+	</tbody>
+</table>
+
